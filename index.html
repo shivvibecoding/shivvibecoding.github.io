@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Nutrition Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3ED;
+    --warm-white: #FDFAF6;
+    --forest: #2C4A35;
+    --forest-light: #3D6349;
+    --sage: #7A9E7E;
+    --sage-light: #A8C5AB;
+    --clay: #C4714A;
+    --clay-light: #E8956D;
+    --gold: #D4A853;
+    --charcoal: #1E2420;
+    --mid: #4A5548;
+    --light-mid: #8A9688;
+    --divider: #D8D2C8;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(247,243,237,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--forest);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--clay); font-style: italic; }
+  .nav-cta {
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--forest-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 5rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -20%; right: -10%;
+    width: 60vw; height: 80vh;
+    background: radial-gradient(ellipse at center, rgba(122,158,126,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--sage-light);
+    color: var(--forest);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+  }
+  .btn-primary {
+    background: var(--clay);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--clay-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(196,113,74,0.3);
+  }
+  .btn-ghost {
+    color: var(--mid);
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--charcoal); }
+  .btn-ghost::after { content: '→'; }
+
+  /* Hero visual */
+  .hero-visual {
+    opacity: 0;
+    animation: fadeIn 0.9s 0.6s forwards;
+    position: relative;
+  }
+  .dashboard-card {
+    background: var(--warm-white);
+    border: 1px solid var(--divider);
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    box-shadow: 0 20px 60px rgba(44,74,53,0.08), 0 4px 16px rgba(44,74,53,0.04);
+    position: relative;
+  }
+  .dashboard-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 1.5rem;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .card-header {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+  .member-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .member-row:last-child { border-bottom: none; }
+  .member-info { display: flex; align-items: center; gap: 0.75rem; }
+  .member-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: white;
+    flex-shrink: 0;
+  }
+  .av-dad { background: var(--forest); }
+  .av-mom { background: var(--sage); }
+  .av-teen { background: var(--clay); }
+  .av-kid { background: var(--gold); }
+  .member-name { font-size: 0.88rem; font-weight: 500; color: var(--charcoal); }
+  .member-goal { font-size: 0.74rem; color: var(--light-mid); margin-top: 1px; }
+  .member-bars { width: 120px; }
+  .bar-label { font-size: 0.7rem; color: var(--light-mid); margin-bottom: 3px; display: flex; justify-content: space-between; }
+  .bar-track { background: var(--divider); border-radius: 2px; height: 5px; overflow: hidden; margin-bottom: 4px; }
+  .bar-fill { height: 100%; border-radius: 2px; transition: width 1.5s ease; }
+  .bar-calories { background: var(--forest); }
+  .bar-protein { background: var(--clay); }
+  .badge-gap {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    background: rgba(212,168,83,0.15);
+    color: #8A6800;
+    white-space: nowrap;
+  }
+  .badge-ok {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    background: rgba(122,158,126,0.15);
+    color: var(--forest);
+    white-space: nowrap;
+  }
+  .floating-chip {
+    position: absolute;
+    background: var(--warm-white);
+    border: 1px solid var(--divider);
+    border-radius: 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .chip-icon { font-size: 1rem; }
+  .chip-1 { bottom: -1.2rem; left: -2rem; animation: float1 4s ease-in-out infinite; }
+  .chip-2 { top: -1.2rem; right: -1.5rem; animation: float2 4s ease-in-out 1s infinite; }
+
+  @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+  @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  /* ── SOCIAL PROOF ── */
+  .social-proof {
+    background: var(--forest);
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+  }
+  .proof-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: var(--cream);
+    max-width: 700px;
+    line-height: 1.4;
+  }
+  .proof-attr {
+    font-size: 0.85rem;
+    color: var(--sage-light);
+    font-weight: 400;
+    margin-top: -1.5rem;
+  }
+  .proof-stats {
+    display: flex;
+    gap: 4rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--clay-light);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--sage-light); margin-top: 0.3rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 6rem 4rem; }
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--forest); }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--mid);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-it-works { background: var(--warm-white); }
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .step-card {
+    background: var(--cream);
+    border: 1px solid var(--divider);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(44,74,53,0.07); }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--divider);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+  }
+  .step-body { font-size: 0.92rem; color: var(--mid); line-height: 1.65; }
+  .step-card.featured {
+    background: var(--forest);
+    border-color: var(--forest);
+    grid-column: span 2;
+    display: flex; gap: 3rem; align-items: center;
+  }
+  .step-card.featured .step-num { color: rgba(255,255,255,0.12); }
+  .step-card.featured .step-title { color: var(--cream); }
+  .step-card.featured .step-body { color: var(--sage-light); }
+  .featured-visual {
+    flex-shrink: 0;
+    width: 200px;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .grocery-item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.78rem;
+    color: var(--sage-light);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .grocery-check { color: var(--sage-light); font-size: 0.65rem; }
+
+  /* ── WHAT YOU'LL KNOW ── */
+  .know-section {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .know-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .know-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem;
+    background: var(--warm-white);
+    border: 1px solid var(--divider);
+    border-radius: 1rem;
+    transition: border-color 0.2s;
+  }
+  .know-item:hover { border-color: var(--sage); }
+  .know-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--sage-light);
+    border-radius: 0.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .know-text strong { display: block; font-size: 0.92rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .know-text span { font-size: 0.83rem; color: var(--mid); }
+
+  .know-visual {
+    position: relative;
+  }
+  .week-chart {
+    background: var(--warm-white);
+    border: 1px solid var(--divider);
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    box-shadow: 0 20px 60px rgba(44,74,53,0.06);
+  }
+  .chart-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+  }
+  .chart-bars {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    height: 100px;
+    margin-bottom: 0.5rem;
+  }
+  .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+  .chart-bar {
+    width: 100%; border-radius: 4px 4px 0 0;
+    background: var(--sage-light);
+    transition: height 1s ease;
+  }
+  .chart-bar.highlight { background: var(--clay); }
+  .chart-day { font-size: 0.65rem; color: var(--light-mid); }
+  .chart-legend {
+    display: flex; gap: 1.25rem; margin-top: 1rem; flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--mid); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .gap-alerts {
+    margin-top: 1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .gap-alert {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: rgba(212,168,83,0.1);
+    border: 1px solid rgba(212,168,83,0.25);
+    border-radius: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.78rem;
+    color: var(--charcoal);
+  }
+  .gap-alert-icon { font-size: 0.9rem; }
+
+  /* ── WHO IT'S FOR ── */
+  .for-section { background: var(--warm-white); }
+  .for-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+  .for-card {
+    border: 1px solid var(--divider);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .for-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(44,74,53,0.07); }
+  .for-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .for-card:nth-child(1)::after { background: var(--forest); }
+  .for-card:nth-child(2)::after { background: var(--clay); }
+  .for-card:nth-child(3)::after { background: var(--gold); }
+  .for-card:nth-child(4)::after { background: var(--sage); }
+  .for-emoji { font-size: 2rem; margin-bottom: 0.75rem; }
+  .for-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem; }
+  .for-body { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+
+  /* ── OBJECTIONS ── */
+  .objections { background: var(--cream); }
+  .obj-grid { display: flex; flex-direction: column; gap: 1px; margin-top: 3rem; border: 1px solid var(--divider); border-radius: 1.25rem; overflow: hidden; }
+  .obj-item {
+    background: var(--warm-white);
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    border-bottom: 1px solid var(--divider);
+    transition: background 0.2s;
+  }
+  .obj-item:last-child { border-bottom: none; }
+  .obj-item:hover { background: var(--cream); }
+  .obj-q {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--mid);
+    font-weight: 400;
+  }
+  .obj-a { font-size: 0.92rem; color: var(--charcoal); line-height: 1.65; }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--charcoal);
+    text-align: center;
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse at center, rgba(122,158,126,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section .section-title { color: var(--cream); max-width: 600px; margin: 0 auto 1rem; }
+  .cta-section .section-title em { color: var(--clay-light); }
+  .cta-section .section-sub { color: rgba(253,250,246,0.6); max-width: 500px; margin: 0 auto 2.5rem; }
+  .cta-fine { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(253,250,246,0.4); letter-spacing: 0.04em; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgba(253,250,246,0.5);
+    letter-spacing: -0.02em;
+  }
+  .footer-logo span { color: var(--clay-light); font-style: italic; }
+  .footer-copy { font-size: 0.75rem; color: rgba(253,250,246,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 3rem; }
+    .hero-visual { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .how-grid { grid-template-columns: 1fr; }
+    .step-card.featured { grid-column: span 1; flex-direction: column; }
+    .featured-visual { width: 100%; }
+    .know-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    .know-visual { order: -1; }
+    .for-grid { grid-template-columns: 1fr; }
+    .obj-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .proof-stats { flex-wrap: wrap; justify-content: center; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Family <span>Nutrition</span> Dashboard</div>
+  <a href="#cta" class="nav-cta">Build My Family's Plan →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Nutrition for the whole household</div>
+    <h1>Your family doesn't share <em>one body.</em> Why share one nutrition plan?</h1>
+    <p class="hero-sub">Dad's cutting. Your teen's fueling soccer season. Mom's maintaining. Your youngest just needs to eat something green. One app tracks every goal, spots every gap, and builds your grocery list automatically.</p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn-primary">See What My Family's Missing</a>
+      <a href="#how" class="btn-ghost">How it works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="floating-chip chip-2"><span class="chip-icon">🛒</span> Grocery list ready</div>
+    <div class="dashboard-card">
+      <div class="card-header">This Week's Family Overview</div>
+      <div class="member-row">
+        <div class="member-info">
+          <div class="member-avatar av-dad">M</div>
+          <div>
+            <div class="member-name">Marcus</div>
+            <div class="member-goal">Cutting · -500 cal deficit</div>
+          </div>
+        </div>
+        <div class="member-bars">
+          <div class="bar-label"><span>Calories</span><span>88%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-calories" style="width:88%"></div></div>
+          <div class="bar-label"><span>Protein</span><span>102%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-protein" style="width:100%"></div></div>
+        </div>
+        <div class="badge-ok">On track ✓</div>
+      </div>
+      <div class="member-row">
+        <div class="member-info">
+          <div class="member-avatar av-mom">S</div>
+          <div>
+            <div class="member-name">Sarah</div>
+            <div class="member-goal">Maintaining</div>
+          </div>
+        </div>
+        <div class="member-bars">
+          <div class="bar-label"><span>Calories</span><span>95%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-calories" style="width:95%"></div></div>
+          <div class="bar-label"><span>Iron</span><span>54%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-protein" style="width:54%"></div></div>
+        </div>
+        <div class="badge-gap">⚠ Low iron</div>
+      </div>
+      <div class="member-row">
+        <div class="member-info">
+          <div class="member-avatar av-teen">J</div>
+          <div>
+            <div class="member-name">Jake (15)</div>
+            <div class="member-goal">Soccer season · Performance</div>
+          </div>
+        </div>
+        <div class="member-bars">
+          <div class="bar-label"><span>Calories</span><span>71%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-calories" style="width:71%"></div></div>
+          <div class="bar-label"><span>Protein</span><span>63%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-protein" style="width:63%"></div></div>
+        </div>
+        <div class="badge-gap">⚠ Underfueling</div>
+      </div>
+      <div class="member-row">
+        <div class="member-info">
+          <div class="member-avatar av-kid">E</div>
+          <div>
+            <div class="member-name">Emma (8)</div>
+            <div class="member-goal">Growth · Healthy eating</div>
+          </div>
+        </div>
+        <div class="member-bars">
+          <div class="bar-label"><span>Calcium</span><span>48%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-calories" style="width:48%"></div></div>
+          <div class="bar-label"><span>Fiber</span><span>40%</span></div>
+          <div class="bar-track"><div class="bar-fill bar-protein" style="width:40%"></div></div>
+        </div>
+        <div class="badge-gap">⚠ Low calcium</div>
+      </div>
+    </div>
+    <div class="floating-chip chip-1"><span class="chip-icon">📊</span> 3 gaps found this week</div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="social-proof">
+  <p class="proof-quote">"Jake finally hit his protein targets two weeks in a row. I just snap a photo of his plate after practice. I don't even think about it anymore."</p>
+  <p class="proof-attr">— Sarah M., mom of 3 · soccer family</p>
+  <div class="proof-stats">
+    <div class="stat"><span class="stat-num">4.2×</span><div class="stat-label">more gaps caught vs. single-user apps</div></div>
+    <div class="stat"><span class="stat-num">11 min</span><div class="stat-label">avg family setup time</div></div>
+    <div class="stat"><span class="stat-num">94%</span><div class="stat-label">of parents log daily after week 1</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-title">Simple for you.<br><em>Personalized for everyone.</em></h2>
+  <p class="section-sub">You're one parent, not four nutritionists. We handle the complexity so you don't have to.</p>
+  <div class="how-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Set up every family member</div>
+      <p class="step-body">Add everyone in under 2 minutes. Each person gets their own calorie and macro targets — based on their age, weight, activity level, and goal. Cutting, bulking, maintaining, peak performance. All of it, automatically calculated.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Log meals in 10 seconds</div>
+      <p class="step-body">Snap a photo. Say what you ate. Type "chicken sandwich and fries." The AI reads it, calculates portions, and logs it. No barcode scanning. No manual entry. Log for your kids from your own phone — one account covers everyone.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">See exactly who needs what</div>
+      <p class="step-body">Every week, the app surfaces the top 3 nutritional gaps for each family member — with specific meal suggestions to fix them. No vague advice. Concrete actions for the actual people in your house.</p>
+    </div>
+    <div class="step-card featured">
+      <div>
+        <div class="step-num">04</div>
+        <div class="step-title">One grocery list. Every gap covered.</div>
+        <p class="step-body">The app generates a single consolidated grocery list that addresses every family member's nutritional needs for the week — organized by aisle. Stop buying "healthy" food that doesn't move the needle for anyone.</p>
+      </div>
+      <div class="featured-visual">
+        <div class="grocery-item">Greek yogurt (32oz) <span class="grocery-check">Calcium · Jake</span></div>
+        <div class="grocery-item">Spinach, baby bag <span class="grocery-check">Iron · Sarah</span></div>
+        <div class="grocery-item">Chicken breast (3lb) <span class="grocery-check">Protein · Jake</span></div>
+        <div class="grocery-item">Lentils, canned (4x) <span class="grocery-check">Fiber · Emma</span></div>
+        <div class="grocery-item">Almonds (bulk) <span class="grocery-check">Healthy fats · All</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL KNOW -->
+<section class="know-section">
+  <div class="know-left">
+    <div class="section-tag">After one week</div>
+    <h2 class="section-title">Stop guessing.<br><em>Start knowing.</em></h2>
+    <p class="section-sub">Most families eat the same things and hope it's working for everyone. Here's what you'll actually know after seven days.</p>
+    <div class="know-list">
+      <div class="know-item">
+        <div class="know-icon">🔍</div>
+        <div class="know-text">
+          <strong>Which family member is consistently under on what</strong>
+          <span>Not just today — patterns over time that show you what's actually missing.</span>
+        </div>
+      </div>
+      <div class="know-item">
+        <div class="know-icon">⚡</div>
+        <div class="know-text">
+          <strong>Whether your teen athlete is actually fueled</strong>
+          <span>Performance nutrition is different from family nutrition. We track both.</span>
+        </div>
+      </div>
+      <div class="know-item">
+        <div class="know-icon">🛒</div>
+        <div class="know-text">
+          <strong>Exactly what to buy Sunday to fix it</strong>
+          <span>No more guessing. One list, organized by aisle, matched to your family's gaps.</span>
+        </div>
+      </div>
+      <div class="know-item">
+        <div class="know-icon">✓</div>
+        <div class="know-text">
+          <strong>Whether your Sunday meal prep is actually enough</strong>
+          <span>Log once, see the full week's coverage across every family member.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="know-visual">
+    <div class="week-chart">
+      <div class="chart-title">Jake's Protein — This Week</div>
+      <div class="chart-bars">
+        <div class="chart-bar-wrap"><div class="chart-bar" style="height:55px"></div><div class="chart-day">Mon</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar" style="height:45px"></div><div class="chart-day">Tue</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar highlight" style="height:80px"></div><div class="chart-day">Wed</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar" style="height:40px"></div><div class="chart-day">Thu</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar highlight" style="height:90px"></div><div class="chart-day">Fri</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar" style="height:35px"></div><div class="chart-day">Sat</div></div>
+        <div class="chart-bar-wrap"><div class="chart-bar" style="height:30px"></div><div class="chart-day">Sun</div></div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--clay)"></div>Practice days (higher target)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--sage-light)"></div>Rest days</div>
+      </div>
+      <div class="gap-alerts">
+        <div class="gap-alert"><span class="gap-alert-icon">💡</span> 5 of 7 days below target. Add 1 post-practice shake.</div>
+        <div class="gap-alert"><span class="gap-alert-icon">🛒</span> Chicken breast added to Sunday's grocery list.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="for-section">
+  <div class="section-tag">Who it's built for</div>
+  <h2 class="section-title">Built for real families,<br><em>not solo athletes.</em></h2>
+  <div class="for-grid">
+    <div class="for-card">
+      <div class="for-emoji">🥗</div>
+      <div class="for-title">The Sunday Meal Prepper</div>
+      <p class="for-body">You do the work. We tell you if it's actually enough — and for whom. No more second-guessing whether your prep covers everyone's needs for the week.</p>
+    </div>
+    <div class="for-card">
+      <div class="for-emoji">🏃</div>
+      <div class="for-title">The Macro-Tracking Household</div>
+      <p class="for-body">Dad tracks macros obsessively. The kids eat whatever. Now everyone gets personalized targets, and you see who's actually on track — without multiple apps.</p>
+    </div>
+    <div class="for-card">
+      <div class="for-emoji">⚽</div>
+      <div class="for-title">The Sports Family</div>
+      <p class="for-body">Your teen athlete has different needs on practice days vs. rest days. We adjust targets automatically and alert you when they're underfueling — before it affects performance.</p>
+    </div>
+    <div class="for-card">
+      <div class="for-emoji">🌿</div>
+      <div class="for-title">The Picky Eater Household</div>
+      <p class="for-body">When your youngest eats beige foods exclusively, you need to know what they're actually missing. We track it so you can fill the gaps with foods they'll actually eat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTION BUSTERS -->
+<section class="objections">
+  <div class="section-tag">Common questions</div>
+  <h2 class="section-title">We've heard the <em>hesitations.</em></h2>
+  <div class="obj-grid">
+    <div class="obj-item">
+      <p class="obj-q">"I already use MyFitnessPal."</p>
+      <p class="obj-a">MyFitnessPal is built for one person. This is built for your whole household. AI gap analysis, family-wide weekly reviews, and one grocery list that covers everyone — none of that exists in single-user apps.</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">"I don't have time to log every meal."</p>
+      <p class="obj-a">That's exactly why we built photo and voice logging. Snap your plate, say what you ate, and you're done in 10 seconds. Most families log a full day in under 3 minutes total.</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">"My kids won't use an app."</p>
+      <p class="obj-a">They don't have to. One parent account covers every family member. You log for them — in 10 seconds — from your own phone. No accounts for kids, no discipline required.</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">"Is this actually accurate for kids and teens?"</p>
+      <p class="obj-a">Yes. Targets are calculated using age- and activity-specific nutritional guidelines. Your teen athlete gets different macro targets than your 8-year-old — because they should.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <h2 class="section-title">Your family is working hard.<br>Make sure their nutrition <em>actually supports it.</em></h2>
+  <p class="section-sub">See which family member is falling short, what they need, and what to buy Sunday to fix it — starting today.</p>
+  <a href="#" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;">Build My Family's Plan →</a>
+  <p class="cta-fine">No credit card required · Set up in under 5 minutes · Cancel anytime</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Family <span>Nutrition</span> Dashboard</div>
+  <div class="footer-copy">© 2025 · Personalized nutrition for every body in your house.</div>
+</footer>
+
+</body>
+</html>
