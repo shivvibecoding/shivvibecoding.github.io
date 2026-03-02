@@ -748,6 +748,21 @@ crossorigin="anonymous"></script>
   }
   .demo-arrow:hover { background: var(--divider); }
 
+  /* ── BRIDGE CALLOUT ── */
+  .bridge-callout {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(196,113,74,0.08);
+    border: 1px solid rgba(196,113,74,0.2);
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.4;
+  }
+  .bridge-icon { color: var(--clay); font-style: normal; font-size: 1rem; }
+
   /* ── TRUST STRIP ── */
   .trust-strip {
     display: flex;
@@ -816,7 +831,7 @@ crossorigin="anonymous"></script>
   <div class="hero-left">
     <div class="hero-tag">Built for sports families</div>
     <h1>Stop guessing if your teen athlete is <em>under-fueled.</em></h1>
-    <p class="hero-sub">Track the whole household in one place. Practice days adjust automatically. Get a Sunday grocery list that closes the week's gaps.</p>
+    <p class="hero-sub">Every week, get a grocery list that closes every family member's nutritional gaps — automatically generated from the week's logs. One list, organized by aisle, for the whole household.</p>
     <div class="hero-ctas">
       <a href="#demo" class="btn-primary">See the demo</a>
       <a href="https://family-nutrition-dashboard.vercel.app/" class="btn-secondary" target="_blank">Get early access</a>
@@ -911,9 +926,13 @@ crossorigin="anonymous"></script>
   <div class="section-tag">Interactive demo</div>
   <h2 class="section-title">See exactly what you get,<br><em>before you sign up.</em></h2>
   <p class="section-sub">Click through three screens from a real family account. This is the actual app — same interface, sample data.</p>
+  <div class="bridge-callout">
+    <span class="bridge-icon">→</span>
+    <span>You don't just learn what's missing. You get a list that fixes it.</span>
+  </div>
 
   <div class="demo-tabs">
-    <button class="demo-tab active" onclick="showDemo(0)">
+    <button class="demo-tab" onclick="showDemo(0)">
       <span class="demo-tab-num">Screen 1</span>
       <span class="demo-tab-label">Family Overview</span>
       <span class="demo-tab-sub">4 members · one view</span>
@@ -923,7 +942,7 @@ crossorigin="anonymous"></script>
       <span class="demo-tab-label">Jake's Week</span>
       <span class="demo-tab-sub">Teen athlete · soccer season</span>
     </button>
-    <button class="demo-tab" onclick="showDemo(2)">
+    <button class="demo-tab active" onclick="showDemo(2)">
       <span class="demo-tab-num">Screen 3</span>
       <span class="demo-tab-label">Grocery List</span>
       <span class="demo-tab-sub">AI-generated · Sunday ready</span>
@@ -933,7 +952,7 @@ crossorigin="anonymous"></script>
   <div class="demo-screen-wrap">
 
     <!-- SCREEN 1: Family Dashboard -->
-    <div class="demo-screen active" id="demo-0">
+    <div class="demo-screen" id="demo-0">
       <div class="mock-browser">
         <div class="browser-chrome">
           <div class="chrome-dots">
@@ -1097,7 +1116,7 @@ crossorigin="anonymous"></script>
     </div>
 
     <!-- SCREEN 3: Grocery List -->
-    <div class="demo-screen" id="demo-2">
+    <div class="demo-screen active" id="demo-2">
       <div class="mock-browser">
         <div class="browser-chrome">
           <div class="chrome-dots">
@@ -1165,13 +1184,13 @@ crossorigin="anonymous"></script>
   </div><!-- end demo-screen-wrap -->
 
   <div class="demo-footer">
-    <p class="demo-caption" id="demo-caption">Every family member in one place. Gaps surface automatically — no hunting through individual logs.</p>
+    <p class="demo-caption" id="demo-caption">One list, every gap closed. Generated in seconds after you click the AI button — organized by store aisle.</p>
     <div style="display:flex; align-items:center; gap:1rem;">
       <div class="demo-arrow" onclick="prevDemo()">←</div>
       <div class="demo-dots">
-        <div class="demo-dot active" onclick="showDemo(0)"></div>
+        <div class="demo-dot" onclick="showDemo(0)"></div>
         <div class="demo-dot" onclick="showDemo(1)"></div>
-        <div class="demo-dot" onclick="showDemo(2)"></div>
+        <div class="demo-dot active" onclick="showDemo(2)"></div>
       </div>
       <div class="demo-arrow" onclick="nextDemo()">→</div>
     </div>
@@ -1367,7 +1386,7 @@ crossorigin="anonymous"></script>
 </footer>
 
 <script>
-  var currentDemo = 0;
+  var currentDemo = 2;
   var captions = [
     "Every family member in one place. Gaps surface automatically — no hunting through individual logs.",
     "Your teen athlete's week at a glance. Practice days get higher targets — the app adjusts automatically.",
