@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -567,6 +566,188 @@ crossorigin="anonymous"></script>
   .footer-logo span { color: var(--clay-light); font-style: italic; }
   .footer-copy { font-size: 0.75rem; color: rgba(253,250,246,0.3); }
 
+  /* ── SECONDARY BUTTON ── */
+  .btn-secondary {
+    background: transparent;
+    color: var(--mid);
+    border: 1.5px solid var(--mid);
+    padding: 0.9rem 2rem;
+    border-radius: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--charcoal); color: var(--charcoal); transform: translateY(-1px); }
+  .cta-section .btn-secondary { border-color: rgba(253,250,246,0.4); color: rgba(253,250,246,0.65); }
+  .cta-section .btn-secondary:hover { border-color: rgba(253,250,246,0.85); color: var(--cream); }
+
+  /* ── DEMO ── */
+  .demo-section { background: var(--warm-white); }
+  .demo-tabs {
+    display: flex; gap: 0.75rem;
+    margin-top: 3rem;
+  }
+  .demo-tab {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: flex-start;
+    padding: 1rem 1.25rem;
+    background: var(--cream);
+    border: 1.5px solid var(--divider);
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    text-align: left;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .demo-tab:hover { border-color: var(--sage); }
+  .demo-tab.active { border-color: var(--forest); background: rgba(44,74,53,0.06); }
+  .demo-tab-num { font-size: 0.68rem; color: var(--light-mid); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .demo-tab-label { font-size: 0.88rem; font-weight: 500; color: var(--charcoal); }
+  .demo-tab.active .demo-tab-label { color: var(--forest); }
+  .demo-tab-sub { font-size: 0.73rem; color: var(--mid); margin-top: 0.15rem; }
+
+  .demo-screen-wrap { margin-top: 2rem; }
+  .demo-screen { display: none; }
+  .demo-screen.active { display: block; animation: fadeIn 0.3s ease; }
+
+  /* Mock browser chrome */
+  .mock-browser {
+    background: var(--warm-white);
+    border-radius: 1.25rem;
+    border: 1px solid var(--divider);
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(44,74,53,0.1);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .browser-chrome {
+    background: #edeae4;
+    border-bottom: 1px solid var(--divider);
+    padding: 0.7rem 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .chrome-dots { display: flex; gap: 0.4rem; }
+  .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .chrome-url {
+    flex: 1;
+    background: white;
+    border-radius: 0.35rem;
+    padding: 0.28rem 0.75rem;
+    font-size: 0.7rem;
+    color: var(--light-mid);
+    font-family: monospace;
+  }
+  .browser-app { padding: 1.5rem 1.75rem; }
+
+  /* App UI elements inside browser */
+  .app-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.25rem; gap: 0.75rem;
+  }
+  .app-page-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--charcoal); letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  }
+  .app-badge {
+    font-family: var(--font-body); font-size: 0.7rem; font-weight: 400;
+    padding: 0.2rem 0.65rem; background: var(--sage-light);
+    color: var(--forest); border-radius: 1rem;
+  }
+  .app-btn {
+    background: var(--cream); border: 1px solid var(--divider);
+    border-radius: 1.5rem; padding: 0.4rem 1rem;
+    font-size: 0.78rem; font-weight: 500; color: var(--charcoal);
+    cursor: default; display: flex; align-items: center; gap: 0.4rem;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .app-btn-ai { background: var(--forest); border-color: var(--forest); color: white; }
+  .app-section-label {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--light-mid); margin-bottom: 0.75rem;
+  }
+  .app-member-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.8rem 0; border-bottom: 1px solid var(--divider); gap: 0.75rem;
+  }
+  .app-member-row:last-child { border-bottom: none; }
+
+  /* Screen 2 */
+  .app-week-chart-mini {
+    background: var(--cream); border: 1px solid var(--divider);
+    border-radius: 1rem; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
+  }
+  .app-chart-title { font-size: 0.8rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.75rem; }
+  .app-bars {
+    display: flex; gap: 0.4rem; align-items: flex-end;
+    height: 76px; margin-bottom: 0.4rem;
+  }
+  .app-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
+  .app-bar { width: 100%; border-radius: 3px 3px 0 0; }
+  .app-bar-day { font-size: 0.58rem; color: var(--light-mid); text-align: center; }
+  .app-progress-rows { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1rem; }
+  .app-progress-row { display: grid; grid-template-columns: 62px 1fr 34px; align-items: center; gap: 0.6rem; }
+  .app-progress-label { font-size: 0.75rem; color: var(--mid); }
+  .app-progress-track { background: var(--divider); border-radius: 2px; height: 6px; overflow: hidden; }
+  .app-progress-fill { height: 100%; border-radius: 2px; }
+  .app-progress-pct { font-size: 0.7rem; color: var(--mid); text-align: right; }
+  .app-gap-rows { display: flex; flex-direction: column; gap: 0.5rem; }
+  .app-gap-row {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    padding: 0.65rem 0.85rem; border-radius: 0.75rem;
+    font-size: 0.78rem; line-height: 1.45; color: var(--charcoal);
+  }
+  .app-gap-row.high { background: rgba(196,113,74,0.08); border: 1px solid rgba(196,113,74,0.2); }
+  .app-gap-row.med { background: rgba(212,168,83,0.08); border: 1px solid rgba(212,168,83,0.2); }
+
+  /* Screen 3 */
+  .app-grocery-note {
+    background: rgba(44,74,53,0.06); border: 1px solid rgba(44,74,53,0.12);
+    border-radius: 0.75rem; padding: 0.75rem 1rem;
+    font-size: 0.8rem; color: var(--forest); font-style: italic; margin-bottom: 1.25rem;
+  }
+  .app-grocery-cat {
+    font-size: 0.72rem; font-weight: 600; color: var(--mid);
+    margin: 0.9rem 0 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .app-grocery-item {
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--divider);
+    font-size: 0.83rem; color: var(--charcoal);
+  }
+  .app-grocery-item:last-of-type { border-bottom: none; }
+  .app-grocery-check {
+    width: 15px; height: 15px; border: 1.5px solid var(--sage);
+    border-radius: 3px; flex-shrink: 0;
+  }
+  .app-grocery-name { flex: 1; }
+  .app-grocery-tag {
+    font-size: 0.67rem; padding: 0.15rem 0.55rem;
+    background: var(--sage-light); color: var(--forest);
+    border-radius: 0.8rem; white-space: nowrap; opacity: 0.9;
+  }
+
+  /* Demo footer */
+  .demo-footer { margin-top: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .demo-caption { font-size: 0.88rem; color: var(--mid); text-align: center; max-width: 500px; line-height: 1.6; }
+  .demo-dots { display: flex; gap: 0.5rem; }
+  .demo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); cursor: pointer; transition: background 0.2s; }
+  .demo-dot.active { background: var(--forest); }
+  .demo-arrow {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--cream); border: 1px solid var(--divider);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1rem; user-select: none;
+    transition: background 0.15s;
+  }
+  .demo-arrow:hover { background: var(--divider); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -582,6 +763,14 @@ crossorigin="anonymous"></script>
     .obj-item { grid-template-columns: 1fr; gap: 0.75rem; }
     .proof-stats { flex-wrap: wrap; justify-content: center; gap: 2rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .demo-tabs { gap: 0.4rem; }
+    .demo-tab { padding: 0.7rem 0.85rem; }
+    .demo-tab-sub { display: none; }
+    .browser-app { padding: 1rem 1.1rem; }
+    .app-btn { display: none; }
+    .member-bars { display: none; }
+    .app-progress-row { grid-template-columns: 52px 1fr 28px; }
+    .chrome-url { display: none; }
   }
 </style>
 </head>
@@ -600,8 +789,8 @@ crossorigin="anonymous"></script>
     <h1>Stop guessing if your teen athlete is <em>under-fueled.</em></h1>
     <p class="hero-sub">Track the whole household in one place. Practice days adjust automatically. Get a Sunday grocery list that closes the week's gaps.</p>
     <div class="hero-ctas">
-      <a href="https://family-nutrition-dashboard.vercel.app/" class="btn-primary" target="_blank">See a sample weekly report</a>
-      <a href="#how" class="btn-ghost">How it works</a>
+      <a href="#demo" class="btn-primary">See the demo</a>
+      <a href="https://family-nutrition-dashboard.vercel.app/" class="btn-secondary" target="_blank">Get early access</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -687,6 +876,279 @@ crossorigin="anonymous"></script>
     <div class="stat"><span class="stat-num">94%</span><div class="stat-label">of parents log daily after week 1</div></div>
   </div>
 </div>
+
+<!-- INTERACTIVE DEMO -->
+<section class="demo-section" id="demo">
+  <div class="section-tag">Interactive demo</div>
+  <h2 class="section-title">See exactly what you get,<br><em>before you sign up.</em></h2>
+  <p class="section-sub">Click through three screens from a real family account. This is the actual app — same interface, sample data.</p>
+
+  <div class="demo-tabs">
+    <button class="demo-tab active" onclick="showDemo(0)">
+      <span class="demo-tab-num">Screen 1</span>
+      <span class="demo-tab-label">Family Overview</span>
+      <span class="demo-tab-sub">4 members · one view</span>
+    </button>
+    <button class="demo-tab" onclick="showDemo(1)">
+      <span class="demo-tab-num">Screen 2</span>
+      <span class="demo-tab-label">Jake's Week</span>
+      <span class="demo-tab-sub">Teen athlete · soccer season</span>
+    </button>
+    <button class="demo-tab" onclick="showDemo(2)">
+      <span class="demo-tab-num">Screen 3</span>
+      <span class="demo-tab-label">Grocery List</span>
+      <span class="demo-tab-sub">AI-generated · Sunday ready</span>
+    </button>
+  </div>
+
+  <div class="demo-screen-wrap">
+
+    <!-- SCREEN 1: Family Dashboard -->
+    <div class="demo-screen active" id="demo-0">
+      <div class="mock-browser">
+        <div class="browser-chrome">
+          <div class="chrome-dots">
+            <div class="chrome-dot" style="background:#FF5F57"></div>
+            <div class="chrome-dot" style="background:#FEBC2E"></div>
+            <div class="chrome-dot" style="background:#28C840"></div>
+          </div>
+          <div class="chrome-url">family-nutrition-dashboard.vercel.app/dashboard</div>
+        </div>
+        <div class="browser-app">
+          <div class="app-topbar">
+            <div class="app-page-title">Family Dashboard</div>
+            <div class="app-btn app-btn-ai">✨ Run AI Analysis</div>
+          </div>
+          <div class="app-section-label">This Week's Overview · March 1–7</div>
+          <div class="app-member-row">
+            <div class="member-info">
+              <div class="member-avatar av-dad">M</div>
+              <div>
+                <div class="member-name">Marcus, 38</div>
+                <div class="member-goal">Cutting · −500 cal deficit</div>
+              </div>
+            </div>
+            <div class="member-bars">
+              <div class="bar-label"><span>Calories</span><span>88%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-calories" style="width:88%"></div></div>
+              <div class="bar-label"><span>Protein</span><span>102%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-protein" style="width:100%"></div></div>
+            </div>
+            <div class="badge-ok">On track ✓</div>
+          </div>
+          <div class="app-member-row">
+            <div class="member-info">
+              <div class="member-avatar av-mom">S</div>
+              <div>
+                <div class="member-name">Sarah, 36</div>
+                <div class="member-goal">Maintaining · 1,800 kcal</div>
+              </div>
+            </div>
+            <div class="member-bars">
+              <div class="bar-label"><span>Calories</span><span>95%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-calories" style="width:95%"></div></div>
+              <div class="bar-label"><span>Iron</span><span>54%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-protein" style="width:54%"></div></div>
+            </div>
+            <div class="badge-gap">⚠ Low iron</div>
+          </div>
+          <div class="app-member-row">
+            <div class="member-info">
+              <div class="member-avatar av-teen">J</div>
+              <div>
+                <div class="member-name">Jake, 15</div>
+                <div class="member-goal">Soccer season · Performance</div>
+              </div>
+            </div>
+            <div class="member-bars">
+              <div class="bar-label"><span>Calories</span><span>71%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-calories" style="width:71%"></div></div>
+              <div class="bar-label"><span>Protein</span><span>63%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-protein" style="width:63%"></div></div>
+            </div>
+            <div class="badge-gap" style="background:rgba(196,113,74,0.15);color:#8A3A00;">⚠ Underfueling</div>
+          </div>
+          <div class="app-member-row">
+            <div class="member-info">
+              <div class="member-avatar av-kid">E</div>
+              <div>
+                <div class="member-name">Emma, 8</div>
+                <div class="member-goal">Growth · Healthy eating</div>
+              </div>
+            </div>
+            <div class="member-bars">
+              <div class="bar-label"><span>Calcium</span><span>48%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-calories" style="width:48%"></div></div>
+              <div class="bar-label"><span>Fiber</span><span>40%</span></div>
+              <div class="bar-track"><div class="bar-fill bar-protein" style="width:40%"></div></div>
+            </div>
+            <div class="badge-gap">⚠ Low calcium</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: Jake's Member Page -->
+    <div class="demo-screen" id="demo-1">
+      <div class="mock-browser">
+        <div class="browser-chrome">
+          <div class="chrome-dots">
+            <div class="chrome-dot" style="background:#FF5F57"></div>
+            <div class="chrome-dot" style="background:#FEBC2E"></div>
+            <div class="chrome-dot" style="background:#28C840"></div>
+          </div>
+          <div class="chrome-url">family-nutrition-dashboard.vercel.app/members/jake</div>
+        </div>
+        <div class="browser-app">
+          <div class="app-topbar">
+            <div class="app-page-title">
+              Jake
+              <span class="app-badge">15 · Soccer Season · 🔥 4-day streak</span>
+            </div>
+            <div class="app-btn">Log Meal</div>
+          </div>
+          <div class="app-week-chart-mini">
+            <div class="app-chart-title">7-Day Protein Intake vs. Target (150g / day on practice days)</div>
+            <div class="app-bars">
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:40px; background:var(--sage-light)"></div>
+                <div class="app-bar-day">Mon</div>
+              </div>
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:34px; background:var(--sage-light)"></div>
+                <div class="app-bar-day">Tue</div>
+              </div>
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:68px; background:var(--clay)"></div>
+                <div class="app-bar-day">Wed ⚽</div>
+              </div>
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:30px; background:var(--sage-light)"></div>
+                <div class="app-bar-day">Thu</div>
+              </div>
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:72px; background:var(--clay)"></div>
+                <div class="app-bar-day">Fri ⚽</div>
+              </div>
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:26px; background:var(--sage-light)"></div>
+                <div class="app-bar-day">Sat</div>
+              </div>
+              <div class="app-bar-wrap">
+                <div class="app-bar" style="height:22px; background:var(--sage-light)"></div>
+                <div class="app-bar-day">Sun</div>
+              </div>
+            </div>
+          </div>
+          <div class="app-section-label">Today's Macros — Friday (Practice Day)</div>
+          <div class="app-progress-rows">
+            <div class="app-progress-row">
+              <div class="app-progress-label">Calories</div>
+              <div class="app-progress-track"><div class="app-progress-fill" style="width:71%; background:var(--forest)"></div></div>
+              <div class="app-progress-pct">71%</div>
+            </div>
+            <div class="app-progress-row">
+              <div class="app-progress-label">Protein</div>
+              <div class="app-progress-track"><div class="app-progress-fill" style="width:63%; background:var(--clay)"></div></div>
+              <div class="app-progress-pct">63%</div>
+            </div>
+            <div class="app-progress-row">
+              <div class="app-progress-label">Carbs</div>
+              <div class="app-progress-track"><div class="app-progress-fill" style="width:78%; background:var(--sage)"></div></div>
+              <div class="app-progress-pct">78%</div>
+            </div>
+          </div>
+          <div class="app-section-label">AI Gap Analysis</div>
+          <div class="app-gap-rows">
+            <div class="app-gap-row high">🔴 <div><strong>Protein: 5 of 7 days below target.</strong> Add one post-practice shake (whey + milk ≈ +45g protein).</div></div>
+            <div class="app-gap-row med">🟡 <div>Calories consistently low on non-practice days. Fix: larger lunch portion on Tue, Thu, Sat.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: Grocery List -->
+    <div class="demo-screen" id="demo-2">
+      <div class="mock-browser">
+        <div class="browser-chrome">
+          <div class="chrome-dots">
+            <div class="chrome-dot" style="background:#FF5F57"></div>
+            <div class="chrome-dot" style="background:#FEBC2E"></div>
+            <div class="chrome-dot" style="background:#28C840"></div>
+          </div>
+          <div class="chrome-url">family-nutrition-dashboard.vercel.app/grocery</div>
+        </div>
+        <div class="browser-app">
+          <div class="app-topbar">
+            <div class="app-page-title">Sunday Grocery List</div>
+            <div class="app-btn">✓ 4 family gaps covered</div>
+          </div>
+          <div class="app-grocery-note">
+            "Based on this week's logs, your family needs these items to close nutritional gaps for all 4 members. Organized by store section."
+          </div>
+          <div class="app-grocery-cat">🥩 Protein &amp; Dairy</div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Chicken breast, 3 lb</div>
+            <div class="app-grocery-tag">Jake — protein gap</div>
+          </div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Greek yogurt, 32oz (×2)</div>
+            <div class="app-grocery-tag">Jake + Emma — calcium</div>
+          </div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Cottage cheese, 16oz</div>
+            <div class="app-grocery-tag">Marcus — cutting protein</div>
+          </div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Whole milk, 1 gallon</div>
+            <div class="app-grocery-tag">Emma — calcium gap</div>
+          </div>
+          <div class="app-grocery-cat">🥬 Produce</div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Baby spinach, 5oz bag</div>
+            <div class="app-grocery-tag">Sarah — iron gap</div>
+          </div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Broccoli, 2 crowns</div>
+            <div class="app-grocery-tag">Emma + Sarah</div>
+          </div>
+          <div class="app-grocery-cat">🥜 Pantry</div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Lentils, canned (×4)</div>
+            <div class="app-grocery-tag">Emma — fiber gap</div>
+          </div>
+          <div class="app-grocery-item">
+            <div class="app-grocery-check"></div>
+            <div class="app-grocery-name">Almonds, bulk bag</div>
+            <div class="app-grocery-tag">Healthy fats · all</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end demo-screen-wrap -->
+
+  <div class="demo-footer">
+    <p class="demo-caption" id="demo-caption">Every family member in one place. Gaps surface automatically — no hunting through individual logs.</p>
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <div class="demo-arrow" onclick="prevDemo()">←</div>
+      <div class="demo-dots">
+        <div class="demo-dot active" onclick="showDemo(0)"></div>
+        <div class="demo-dot" onclick="showDemo(1)"></div>
+        <div class="demo-dot" onclick="showDemo(2)"></div>
+      </div>
+      <div class="demo-arrow" onclick="nextDemo()">→</div>
+    </div>
+    <a href="https://family-nutrition-dashboard.vercel.app/" class="btn-primary" target="_blank" style="margin-top:0.5rem;">Get early access →</a>
+  </div>
+</section>
 
 <!-- HOW IT WORKS -->
 <section class="how-it-works" id="how">
@@ -843,7 +1305,10 @@ crossorigin="anonymous"></script>
 <section class="cta-section" id="cta">
   <h2 class="section-title">Your family is working hard.<br>Make sure their nutrition <em>actually supports it.</em></h2>
   <p class="section-sub">See which family member is falling short, what they need, and what to buy Sunday to fix it — starting today.</p>
-  <a href="https://family-nutrition-dashboard.vercel.app/" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Build My Family's Plan →</a>
+  <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:center;">
+    <a href="#demo" class="btn-secondary">See the demo ↑</a>
+    <a href="https://family-nutrition-dashboard.vercel.app/" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Get early access →</a>
+  </div>
   <p class="cta-fine">No credit card required · Set up in under 5 minutes · Cancel anytime</p>
 </section>
 
@@ -856,5 +1321,30 @@ crossorigin="anonymous"></script>
   </div>
 </footer>
 
+<script>
+  var currentDemo = 0;
+  var captions = [
+    "Every family member in one place. Gaps surface automatically — no hunting through individual logs.",
+    "Your teen athlete's week at a glance. Practice days get higher targets — the app adjusts automatically.",
+    "One list, every gap closed. Generated in seconds after you click the AI button — organized by store aisle."
+  ];
+
+  function showDemo(n) {
+    document.querySelectorAll('.demo-screen').forEach(function(s, i) {
+      s.classList.toggle('active', i === n);
+    });
+    document.querySelectorAll('.demo-tab').forEach(function(t, i) {
+      t.classList.toggle('active', i === n);
+    });
+    document.querySelectorAll('.demo-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === n);
+    });
+    document.getElementById('demo-caption').textContent = captions[n];
+    currentDemo = n;
+  }
+
+  function nextDemo() { showDemo((currentDemo + 1) % 3); }
+  function prevDemo() { showDemo((currentDemo + 2) % 3); }
+</script>
 </body>
 </html>
