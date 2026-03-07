@@ -763,6 +763,28 @@ crossorigin="anonymous"></script>
   }
   .bridge-icon { color: var(--clay); font-style: normal; font-size: 1rem; }
 
+  /* ── HERO DIFFERENTIATOR + META ── */
+  .hero-differentiator {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--clay);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.42s forwards;
+  }
+  .hero-differentiator::before { content: '→'; }
+  .hero-meta {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--light-mid);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s forwards;
+    flex-wrap: wrap;
+  }
+  .hero-meta-dot { color: var(--divider); }
+
   /* ── TRUST STRIP ── */
   .trust-strip {
     display: flex;
@@ -829,12 +851,20 @@ crossorigin="anonymous"></script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-tag">Built for sports families</div>
+    <div class="hero-tag">Built for households, not just individuals</div>
     <h1>Stop guessing if your teen athlete is <em>under-fueled.</em></h1>
     <p class="hero-sub">Every week, get a grocery list that closes every family member's nutritional gaps — automatically generated from the week's logs. One list, organized by aisle, for the whole household.</p>
+    <p class="hero-differentiator">You don't just learn what's missing. You get a list that fixes it.</p>
     <div class="hero-ctas">
       <a href="#demo" class="btn-primary">See the demo</a>
-      <a href="https://family-nutrition-dashboard.vercel.app/signup" class="btn-secondary" target="_blank">Get early access</a>
+      <a href="https://family-nutrition-dashboard.vercel.app/signup" class="btn-secondary" target="_blank">Start free</a>
+    </div>
+    <div class="hero-meta">
+      <span>Free to start</span>
+      <span class="hero-meta-dot">·</span>
+      <span>No credit card required</span>
+      <span class="hero-meta-dot">·</span>
+      <span>One account covers the whole family</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -915,9 +945,9 @@ crossorigin="anonymous"></script>
   <p class="proof-quote">"Jake finally hit his protein targets two weeks in a row. I just snap a photo of his plate after practice. I don't even think about it anymore."</p>
   <p class="proof-attr">— Sarah M., mom of 3 · soccer family</p>
   <div class="proof-stats">
-    <div class="stat"><span class="stat-num" style="font-size:1.1rem;line-height:1.3;padding:0.4rem 0;display:block;">Catches gaps earlier</span><div class="stat-label">Designed to surface gaps earlier than single-user tracking</div></div>
-    <div class="stat"><span class="stat-num" style="font-size:1.1rem;line-height:1.3;padding:0.4rem 0;display:block;">Setup in minutes</span><div class="stat-label">Most families have everyone added and tracking in minutes</div></div>
-    <div class="stat"><span class="stat-num" style="font-size:1.1rem;line-height:1.3;padding:0.4rem 0;display:block;">Under 3 min/day</span><div class="stat-label">Daily logging designed to take under 3 minutes for the whole household</div></div>
+    <div class="stat"><span class="stat-num">10 sec</span><div class="stat-label">per meal — snap a photo or say what you ate</div></div>
+    <div class="stat"><span class="stat-num">1 list</span><div class="stat-label">weekly grocery list covering every family member's gaps</div></div>
+    <div class="stat"><span class="stat-num">1 account</span><div class="stat-label">covers the whole household — kids never need to sign up</div></div>
   </div>
 </div>
 
@@ -1194,7 +1224,7 @@ crossorigin="anonymous"></script>
       </div>
       <div class="demo-arrow" onclick="nextDemo()">→</div>
     </div>
-    <a href="https://family-nutrition-dashboard.vercel.app/signup" class="btn-primary" target="_blank" style="margin-top:0.5rem;">Get early access →</a>
+    <a href="https://family-nutrition-dashboard.vercel.app/signup" class="btn-primary" target="_blank" style="margin-top:0.5rem;">Start free →</a>
     <div class="trust-strip">
       <div class="trust-item">
         <span class="trust-icon">👨‍👩‍👧‍👦</span>
@@ -1319,6 +1349,16 @@ crossorigin="anonymous"></script>
   <h2 class="section-title">Built for real families,<br><em>not solo athletes.</em></h2>
   <div class="for-grid">
     <div class="for-card">
+      <div class="for-emoji">🌿</div>
+      <div class="for-title">The Picky Eater Household</div>
+      <p class="for-body">When your youngest eats beige foods exclusively, you need to know what they're actually missing. We track it so you can fill the gaps with foods they'll actually eat.</p>
+    </div>
+    <div class="for-card">
+      <div class="for-emoji">⚽</div>
+      <div class="for-title">The Sports Family</div>
+      <p class="for-body">Your teen athlete has different needs on practice days vs. rest days. We adjust targets automatically and alert you when they're underfueling — before it affects performance.</p>
+    </div>
+    <div class="for-card">
       <div class="for-emoji">🥗</div>
       <div class="for-title">The Sunday Meal Prepper</div>
       <p class="for-body">You do the work. We tell you if it's actually enough — and for whom. No more second-guessing whether your prep covers everyone's needs for the week.</p>
@@ -1327,16 +1367,6 @@ crossorigin="anonymous"></script>
       <div class="for-emoji">🏃</div>
       <div class="for-title">The Macro-Tracking Household</div>
       <p class="for-body">Dad tracks macros obsessively. The kids eat whatever. Now everyone gets personalized targets, and you see who's actually on track — without multiple apps.</p>
-    </div>
-    <div class="for-card">
-      <div class="for-emoji">⚽</div>
-      <div class="for-title">The Sports Family</div>
-      <p class="for-body">Your teen athlete has different needs on practice days vs. rest days. We adjust targets automatically and alert you when they're underfueling — before it affects performance.</p>
-    </div>
-    <div class="for-card">
-      <div class="for-emoji">🌿</div>
-      <div class="for-title">The Picky Eater Household</div>
-      <p class="for-body">When your youngest eats beige foods exclusively, you need to know what they're actually missing. We track it so you can fill the gaps with foods they'll actually eat.</p>
     </div>
   </div>
 </section>
@@ -1367,11 +1397,11 @@ crossorigin="anonymous"></script>
 
 <!-- CTA -->
 <section class="cta-section" id="cta">
-  <h2 class="section-title">Your family is working hard.<br>Make sure their nutrition <em>actually supports it.</em></h2>
-  <p class="section-sub">See which family member is falling short, what they need, and what to buy Sunday to fix it — starting today.</p>
+  <h2 class="section-title">Find out who's falling short<br><em>this week.</em></h2>
+  <p class="section-sub">Setup takes 5 minutes. After seven days, you'll know exactly what each family member is missing — and have a grocery list that fixes it.</p>
   <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:center;">
     <a href="#demo" class="btn-secondary">See the demo ↑</a>
-    <a href="https://family-nutrition-dashboard.vercel.app/signup" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Get early access →</a>
+    <a href="https://family-nutrition-dashboard.vercel.app/signup" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Start free →</a>
   </div>
   <p class="cta-fine">No credit card required · Set up in under 5 minutes · Cancel anytime</p>
 </section>
