@@ -547,6 +547,48 @@ crossorigin="anonymous"></script>
   .cta-section .section-sub { color: rgba(253,250,246,0.6); max-width: 500px; margin: 0 auto 2.5rem; }
   .cta-fine { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(253,250,246,0.4); letter-spacing: 0.04em; }
 
+  /* ── FOR SECTION — featured layout ── */
+  .for-featured {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+    background: var(--warm-white);
+    border: 1.5px solid var(--forest);
+    border-radius: 1.5rem;
+    padding: 2.25rem 2.5rem;
+    margin-top: 3rem;
+    box-shadow: 0 8px 32px rgba(44,74,53,0.08);
+  }
+  .for-featured-emoji { font-size: 3rem; line-height: 1; padding-top: 0.2rem; }
+  .for-featured-body .for-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+  .for-featured-body .for-body {
+    font-size: 0.98rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  .for-also-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light-mid);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 900px) {
+    .for-featured { grid-template-columns: 1fr; gap: 1rem; padding: 1.75rem; }
+    .for-featured-emoji { font-size: 2.2rem; }
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--charcoal);
@@ -851,9 +893,9 @@ crossorigin="anonymous"></script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-tag">Built for households, not just individuals</div>
+    <div class="hero-tag">The nutrition dashboard for sports families</div>
     <h1>Stop guessing if your teen athlete is <em>under-fueled.</em></h1>
-    <p class="hero-sub">Every week, get a grocery list that closes every family member's nutritional gaps — automatically generated from the week's logs. One list, organized by aisle, for the whole household.</p>
+    <p class="hero-sub">Track meals in seconds, spot weekly nutrition gaps for each family member, and get one grocery list that helps fix them.</p>
     <p class="hero-differentiator">You don't just learn what's missing. You get a list that fixes it.</p>
     <div class="hero-ctas">
       <a href="#demo" class="btn-primary">See the demo</a>
@@ -1342,27 +1384,33 @@ crossorigin="anonymous"></script>
 <!-- WHO IT'S FOR -->
 <section class="for-section">
   <div class="section-tag">Who it's built for</div>
-  <h2 class="section-title">Built for real families,<br><em>not solo athletes.</em></h2>
+  <h2 class="section-title">Built for <em>sports families.</em></h2>
+  <p class="section-sub">One parent, one account, every family member covered — including the kid who has practice three nights a week.</p>
+
+  <div class="for-featured">
+    <div class="for-featured-emoji">⚽</div>
+    <div class="for-featured-body">
+      <div class="for-title">The Sports Family</div>
+      <p class="for-body">Your teen athlete has different needs on practice days vs. rest days. We calculate targets automatically by age, weight, and activity level — and flag when they're underfueling before it shows up on the field. One parent logs for everyone. One grocery list closes every gap. No accounts for kids required.</p>
+    </div>
+  </div>
+
+  <p class="for-also-label">Also works well for</p>
   <div class="for-grid">
     <div class="for-card">
       <div class="for-emoji">🌿</div>
       <div class="for-title">The Picky Eater Household</div>
-      <p class="for-body">When your youngest eats beige foods exclusively, you need to know what they're actually missing. We track it so you can fill the gaps with foods they'll actually eat.</p>
-    </div>
-    <div class="for-card">
-      <div class="for-emoji">⚽</div>
-      <div class="for-title">The Sports Family</div>
-      <p class="for-body">Your teen athlete has different needs on practice days vs. rest days. We adjust targets automatically and alert you when they're underfueling — before it affects performance.</p>
+      <p class="for-body">When your youngest eats beige foods exclusively, you need to know what they're actually missing — so the grocery list gives you things they'll actually eat.</p>
     </div>
     <div class="for-card">
       <div class="for-emoji">🥗</div>
       <div class="for-title">The Sunday Meal Prepper</div>
-      <p class="for-body">You do the work. We tell you if it's actually enough — and for whom. No more second-guessing whether your prep covers everyone's needs for the week.</p>
+      <p class="for-body">You do the work. We tell you if it's actually enough — and for whom. No more guessing whether your prep covers everyone's needs for the week.</p>
     </div>
     <div class="for-card">
       <div class="for-emoji">🏃</div>
       <div class="for-title">The Macro-Tracking Household</div>
-      <p class="for-body">Dad tracks macros obsessively. The kids eat whatever. Now everyone gets personalized targets, and you see who's actually on track — without multiple apps.</p>
+      <p class="for-body">One parent tracks obsessively. Everyone else eats whatever. Now you see the whole household in one view — without managing multiple apps.</p>
     </div>
   </div>
 </section>
