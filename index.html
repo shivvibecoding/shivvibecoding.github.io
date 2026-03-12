@@ -74,6 +74,15 @@ crossorigin="anonymous"></script>
     text-decoration: none;
   }
   .nav-cta:hover { background: var(--forest-light); transform: translateY(-1px); }
+  .nav-login {
+    color: var(--mid);
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-login:hover { color: var(--forest); }
 
   /* ── BETA BANNER ── */
   .beta-banner {
@@ -918,7 +927,10 @@ crossorigin="anonymous"></script>
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Family <span>Nutrition</span> Dashboard</div>
-  <a href="https://app.fuelthefam.com/signup" class="nav-cta" target="_blank">Try the Beta →</a>
+  <div style="display:flex; align-items:center; gap:1.25rem;">
+    <a href="https://app.fuelthefam.com/login" class="nav-login" target="_blank">Log in</a>
+    <a href="https://app.fuelthefam.com/signup" class="nav-cta" target="_blank">Try the Beta →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
