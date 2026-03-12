@@ -643,6 +643,34 @@ crossorigin="anonymous"></script>
   .footer-logo span { color: var(--clay-light); font-style: italic; }
   .footer-copy { font-size: 0.75rem; color: rgba(253,250,246,0.3); }
 
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: #f0ece5;
+    border-top: 2px solid var(--divider);
+    padding: 2.5rem 4rem;
+    text-align: center;
+  }
+  .disclaimer-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.75rem;
+  }
+  .disclaimer p {
+    font-size: 0.8rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto 0.5rem;
+  }
+  .disclaimer p:last-child { margin-bottom: 0; }
+  @media (max-width: 768px) {
+    .disclaimer { padding: 2rem 1.5rem; }
+    .disclaimer p { font-size: 0.78rem; }
+  }
+
   /* ── SECONDARY BUTTON ── */
   .btn-secondary {
     background: transparent;
@@ -1491,6 +1519,14 @@ crossorigin="anonymous"></script>
     <a href="https://app.fuelthefam.com/signup" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Join the Beta — it's free →</a>
   </div>
   <p class="cta-fine">Set up in under 5 minutes</p>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="disclaimer">
+  <p class="disclaimer-title">⚠ Important — Please Read</p>
+  <p><strong>FuelTheFam is an early-stage beta product.</strong> Features are still being developed and data may contain errors or inaccuracies. Do not make health, medical, or dietary decisions based solely on information provided by this app.</p>
+  <p>Nutritional targets and gap analysis are generated using general guidelines and AI estimates — they are <strong>not personalised medical advice</strong> and are not a substitute for guidance from a registered dietitian, nutritionist, or healthcare provider. If you have concerns about a family member's diet, growth, or relationship with food, please consult a qualified professional.</p>
+  <p>Calorie and macro tracking may not be appropriate for everyone. Use this app as a general reference tool only. By using FuelTheFam, you acknowledge that the information provided may be incomplete or inaccurate and that the developers accept no liability for decisions made based on app data.</p>
 </section>
 
 <!-- FOOTER -->
