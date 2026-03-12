@@ -44,7 +44,7 @@ crossorigin="anonymous"></script>
 
   /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 2.25rem; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.25rem 4rem;
     background: rgba(247,243,237,0.88);
@@ -77,10 +77,13 @@ crossorigin="anonymous"></script>
 
   /* ── BETA BANNER ── */
   .beta-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 101;
     background: var(--forest);
     color: rgba(255,255,255,0.92);
     text-align: center;
-    padding: 0.6rem 1.5rem;
+    padding: 0.55rem 1.5rem;
     font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.01em;
@@ -95,7 +98,7 @@ crossorigin="anonymous"></script>
   }
   .beta-banner a:hover { color: #fff; }
   @media (max-width: 600px) {
-    .beta-banner { font-size: 0.75rem; padding: 0.55rem 1rem; }
+    .beta-banner { font-size: 0.72rem; padding: 0.5rem 1rem; }
   }
 
   /* ── HERO ── */
@@ -104,7 +107,7 @@ crossorigin="anonymous"></script>
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 8rem 4rem 5rem;
+    padding: 10.5rem 4rem 5rem;
     gap: 4rem;
     position: relative;
     overflow: hidden;
