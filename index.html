@@ -1071,7 +1071,7 @@ crossorigin="anonymous"></script>
   </div>
 
   <div class="demo-tabs">
-    <button class="demo-tab" onclick="showDemo(0)">
+    <button class="demo-tab active" onclick="showDemo(0)">
       <span class="demo-tab-num">Screen 1</span>
       <span class="demo-tab-label">Family Overview</span>
       <span class="demo-tab-sub">4 members · one view</span>
@@ -1081,7 +1081,7 @@ crossorigin="anonymous"></script>
       <span class="demo-tab-label">Jake's Week</span>
       <span class="demo-tab-sub">Teen athlete · soccer season</span>
     </button>
-    <button class="demo-tab active" onclick="showDemo(2)">
+    <button class="demo-tab" onclick="showDemo(2)">
       <span class="demo-tab-num">Screen 3</span>
       <span class="demo-tab-label">Grocery List</span>
       <span class="demo-tab-sub">AI-generated · Sunday ready</span>
@@ -1091,7 +1091,7 @@ crossorigin="anonymous"></script>
   <div class="demo-screen-wrap">
 
     <!-- SCREEN 1: Family Dashboard -->
-    <div class="demo-screen" id="demo-0">
+    <div class="demo-screen active" id="demo-0">
       <div class="mock-browser">
         <div class="browser-chrome">
           <div class="chrome-dots">
@@ -1255,7 +1255,7 @@ crossorigin="anonymous"></script>
     </div>
 
     <!-- SCREEN 3: Grocery List -->
-    <div class="demo-screen active" id="demo-2">
+    <div class="demo-screen" id="demo-2">
       <div class="mock-browser">
         <div class="browser-chrome">
           <div class="chrome-dots">
@@ -1327,9 +1327,9 @@ crossorigin="anonymous"></script>
     <div style="display:flex; align-items:center; gap:1rem;">
       <div class="demo-arrow" onclick="prevDemo()">←</div>
       <div class="demo-dots">
-        <div class="demo-dot" onclick="showDemo(0)"></div>
+        <div class="demo-dot active" onclick="showDemo(0)"></div>
         <div class="demo-dot" onclick="showDemo(1)"></div>
-        <div class="demo-dot active" onclick="showDemo(2)"></div>
+        <div class="demo-dot" onclick="showDemo(2)"></div>
       </div>
       <div class="demo-arrow" onclick="nextDemo()">→</div>
     </div>
@@ -1540,7 +1540,7 @@ crossorigin="anonymous"></script>
 </footer>
 
 <script>
-  var currentDemo = 2;
+  var currentDemo = 0;
   var captions = [
     "Every family member in one place. Gaps surface automatically — no hunting through individual logs.",
     "Your teen athlete's week at a glance. Practice days get higher targets — the app adjusts automatically.",
