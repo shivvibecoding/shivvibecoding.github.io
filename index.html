@@ -75,6 +75,29 @@ crossorigin="anonymous"></script>
   }
   .nav-cta:hover { background: var(--forest-light); transform: translateY(-1px); }
 
+  /* ── BETA BANNER ── */
+  .beta-banner {
+    background: var(--forest);
+    color: rgba(255,255,255,0.92);
+    text-align: center;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+  .beta-banner strong { font-weight: 600; color: var(--sage-light); }
+  .beta-banner a {
+    color: var(--sage-light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  .beta-banner a:hover { color: #fff; }
+  @media (max-width: 600px) {
+    .beta-banner { font-size: 0.75rem; padding: 0.55rem 1rem; }
+  }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -884,10 +907,15 @@ crossorigin="anonymous"></script>
 </head>
 <body>
 
+<!-- BETA BANNER -->
+<div class="beta-banner">
+  <strong>Early Beta</strong> — FuelTheFam is actively being built and improved. Expect new features regularly. <a href="mailto:familynutritiondashboard@zohomail.com">Share feedback →</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Family <span>Nutrition</span> Dashboard</div>
-  <a href="https://app.fuelthefam.com/signup" class="nav-cta" target="_blank">Build My Family's Plan →</a>
+  <a href="https://app.fuelthefam.com/signup" class="nav-cta" target="_blank">Try the Beta →</a>
 </nav>
 
 <!-- HERO -->
@@ -899,7 +927,7 @@ crossorigin="anonymous"></script>
     <p class="hero-differentiator">You don't just learn what's missing. You get a list that fixes it.</p>
     <div class="hero-ctas">
       <a href="#demo" class="btn-primary">See the demo</a>
-      <a href="https://app.fuelthefam.com/signup" class="btn-secondary" target="_blank">Get started</a>
+      <a href="https://app.fuelthefam.com/signup" class="btn-secondary" target="_blank">Join the Beta — it's free</a>
     </div>
     <div class="hero-meta">
       <span>One account covers the whole family</span>
@@ -1262,7 +1290,7 @@ crossorigin="anonymous"></script>
       </div>
       <div class="demo-arrow" onclick="nextDemo()">→</div>
     </div>
-    <a href="https://app.fuelthefam.com/signup" class="btn-primary" target="_blank" style="margin-top:0.5rem;">Get started →</a>
+    <a href="https://app.fuelthefam.com/signup" class="btn-primary" target="_blank" style="margin-top:0.5rem;">Join the Beta — it's free →</a>
     <div class="trust-strip">
       <div class="trust-item">
         <span class="trust-icon">👨‍👩‍👧‍👦</span>
@@ -1445,7 +1473,7 @@ crossorigin="anonymous"></script>
   <p class="section-sub">Setup takes 5 minutes. After seven days, you'll know exactly what each family member is missing — and have a grocery list that fixes it.</p>
   <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:center;">
     <a href="#demo" class="btn-secondary">See the demo ↑</a>
-    <a href="https://app.fuelthefam.com/signup" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Get started →</a>
+    <a href="https://app.fuelthefam.com/signup" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;" target="_blank">Join the Beta — it's free →</a>
   </div>
   <p class="cta-fine">Set up in under 5 minutes</p>
 </section>
